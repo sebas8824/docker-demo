@@ -1,4 +1,4 @@
-package com.microservices.dockerdemo
+package com.microservices.dockerdemo.controller
 
 import com.microservices.dockerdemo.service.CustomerService
 import org.springframework.beans.factory.annotation.Autowired
