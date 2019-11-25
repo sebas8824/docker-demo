@@ -1,5 +1,6 @@
 package com.microservices.dockerdemo.service
 
+import org.amshove.kluent.*
 import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -17,13 +18,16 @@ internal class CustomerServiceTest {
     @Test
     fun `we should get a customer with id 1`() {
         val customer = customerService.getCustomer(1)
-        Assert.assertNotNull(customer)
-        Assert.assertEquals(customer?.name, "Kotlin")
+        customer.`should not be null`()
+        customer?.name `should be` "Kotlin"
     }
 
     @Test
     fun `we should get all the customers`() {
         val customers = customerService.getAllCustomers()
-        Assert.assertEquals(customers.size, 3)
+        customers.size `should equal to` 3
+        customers.size `should be greater than` 0
+        customers.size shouldBeLessOrEqualTo 3
+        customers.size `should be in range` 1..3
     }
 }
